@@ -1,0 +1,76 @@
+[workspace]
+members = [
+    ".",
+    "crates/az-core",
+    "crates/az-mcts",
+    "crates/az-nn",
+    "crates/connect4-game",
+    "crates/uttt-game",
+]
+
+[package]
+name = "alphazero-pipeline"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+az-core = { path = "crates/az-core" }
+az-mcts = { path = "crates/az-mcts" }
+az-nn = { path = "crates/az-nn" }
+connect4-game = { path = "crates/connect4-game" }
+uttt-game = { path = "crates/uttt-game" }
+
+[lib]
+name = "az_pipeline"
+path = "src/lib.rs"
+
+[[bin]]
+name = "uttt-selfplay"
+path = "src/bin/uttt_selfplay.rs"
+
+[[bin]]
+name = "uttt-train"
+path = "src/bin/uttt_train.rs"
+
+[[bin]]
+name = "uttt-package"
+path = "src/bin/uttt_package.rs"
+
+[[bin]]
+name = "uttt-watch-selfplay"
+path = "src/bin/uttt_watch_selfplay.rs"
+
+[[bin]]
+name = "uttt-play"
+path = "src/bin/uttt_play.rs"
+
+[[bin]]
+name = "alpha-loop"
+path = "src/bin/alpha_loop.rs"
+
+[[bin]]
+name = "connect4-selfplay"
+path = "src/bin/connect4_selfplay.rs"
+
+[[bin]]
+name = "connect4-train"
+path = "src/bin/connect4_train.rs"
+
+[[bin]]
+name = "connect4-play"
+path = "src/bin/connect4_play.rs"
+
+[[bin]]
+name = "export-model"
+path = "src/bin/export_model.rs"
+
+[[bin]]
+name = "arena"
+path = "src/bin/arena.rs"
+
+[profile.release]
+codegen-units = 1
+lto = true
+panic = "abort"
+strip = true
+
